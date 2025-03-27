@@ -1,42 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TicTacToe Game</title>
-   <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Toc Toe Game</title>
+     <link rel="stylesheet" href="website.css">
 </head>
 <body>
-  <main>
-    <header id="header">
-      <div class="player" id="xPlayerDisplay" onclick="choosePlayer('X')">X</div>
-      <h3 id="titleHeader">Choose Your Side</h3>
-      <div class="player" id="oPlayerDisplay" onclick="choosePlayer('O')">O</div>
-    </header>
+    <!-- Website Content -->
+    <div id="websiteContent">
+        <nav class="navbar">
+            <div class="logo">Google Play</div>
+            <ul class="nav-links">
+                <li>Games</li>
+                <li>Apps</li>
+                <li>Movies</li>
+                <li>Books</li>
+                <li>Kids</li>
+            </ul>
+            <div class="profile"></div>
+        </nav>
 
-    <button id="startBtn">Start Game</button>
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source src="/20250327-1124-58.2543388.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
-    <div id="timer" style="display: none;">
-      Time Left: <span id="timeLeft">10</span>s
-      <progress id="progressBar" max="10" value="10"></progress>
+        <div class="container">
+            <div class="content">
+                <h1>Tic Toc Toe Game</h1>
+                <p class="subtitle">Burny Games</p>
+                <p class="desc">Contains ads • In-app purchases</p>
+
+                <div class="info">
+                    <p>⭐ 4.1 (201K reviews)</p>
+                    <p>📥 10M+ Downloads</p>
+                    <p>🧒 Rated for 3+</p>
+                </div>
+
+                <div class="buttons">
+                    <button>Install on Windows</button>
+                    <button>Install on more devices</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="board">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-    </div>
 
-    <h2 id="winnerMessage"></h2>
+    <!-- Game Page (Initially Hidden) -->
+    <iframe id="gamePage" src="game.html" style="display: none; width: 100vw; height: 100vh; border: none;"></iframe>
 
-    <button id="restartBtn" style="display: none;">Restart</button>
-  </main>
-
-   <script src="index.js"></script>
+    <script src="website.js"></script>
 </body>
 </html>
