@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Toc Toe Game</title>
-     <link rel="stylesheet" href="website.css">
+    <title>Tic Tac Toe Game</title>
+    <link rel="stylesheet" href="website.css">
 </head>
 <body>
     <!-- Website Content -->
@@ -19,19 +19,21 @@
                 <li>Kids</li>
             </ul>
             <div class="profile"></div>
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                ☰
+            </div>
         </nav>
 
-        <div class="video-background">
-            <video autoplay muted loop>
+        <div class="video-wrapper">
+            <video class="video-background" autoplay muted loop>
                 <source src="./assests/myvideo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <!-- <img src="./assests/tic-toc-toe.gif" alt=""> -->
         </div>
 
         <div class="container">
             <div class="content">
-                <h1>Tic Toc Toe Game</h1>
+                <h1>Tic Tac Toe Game</h1>
                 <p class="subtitle">Burny Games</p>
                 <p class="desc">Contains ads • In-app purchases</p>
 

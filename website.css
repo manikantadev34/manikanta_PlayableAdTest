@@ -18,9 +18,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 5%;
-    background-color: #222;
-    color: white;
     background-color: #009c40;
+    color: white;
 }
 
 .navbar .logo {
@@ -52,23 +51,23 @@ body {
 }
 
 /* Video Background */
-.video-background {
+.video-wrapper {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
     z-index: -1;
 }
 
-.video-background video {
+.video-background {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Container */
+/* Content Container */
 .container {
     display: flex;
     align-items: center;
@@ -82,6 +81,9 @@ body {
 /* Left Content */
 .content {
     max-width: 500px;
+    /* //background: rgba(0, 0, 0, 0.6); */
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .content h1 {
@@ -120,4 +122,66 @@ button {
 
 button:hover {
     background-color: #009c40;
+}
+.hamburger-menu {
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+    color: white;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #009c40;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        text-align: left;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .content {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .navbar {
+        padding: 15px;
+        justify-content: space-between;
+    }
+
+    .video-wrapper {
+        height: 100vh;
+    }
+
+    .video-background {
+        object-fit: cover;
+    }
 }

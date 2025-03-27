@@ -10,3 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 15000);
     }, 10000); // Show website for 10 seconds
 });
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Page Loaded");
+});
+function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("active");
+}
+
