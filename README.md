@@ -24,6 +24,18 @@ Project Structure
  ├── 📄 script.js     # Handles logic for game
  ├── 🎥 myvideo.mp4 # Video used in the website
  ├── 📄 README.md     # Documentation (this file)
+
+key code:
+setTimeout(() => {
+    document.getElementById("websiteContent").style.display = "none";
+    document.getElementById("gamePage").style.display = "block";
+
+    setTimeout(() => {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.arcsys.tictactoe&hl=en_IN";
+    }, 15000);
+}, 10000);
+
+
 How It Works
 The index.html page loads first and remains visible for 10 seconds.
 
