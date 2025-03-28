@@ -22,12 +22,10 @@ const winConditions = [
   [0, 4, 8], [2, 4, 6]
 ];
 
-// Utility: Remove blinking effect from all cells
 function removeBlinkFromCells() {
   cells.forEach(cell => cell.classList.remove('blink'));
 }
 
-// Utility: Choose a random empty cell and add blink effect
 function updateBlinkingCell() {
   removeBlinkFromCells();
   let availableCells = [];
@@ -40,7 +38,6 @@ function updateBlinkingCell() {
   }
 }
 
-// Choose player and control blinking for start button
 function choosePlayer(selectedPlayer) {
   if (!isGameStart) {
     player = selectedPlayer;
@@ -51,13 +48,11 @@ function choosePlayer(selectedPlayer) {
 
     titleHeader.textContent = `You are ${player}`;
 
-    // Hide pointer if exists
     const xPointer = document.getElementById("xPointer");
     if (xPointer) {
       xPointer.style.display = "none";
     }
 
-    // When X is chosen, remove any blink on it and start blinking the start button
     if (player === 'X') {
       xPlayerDisplay.classList.remove('blink');
       xPlayerDisplay.classList.add('heartbeat');
@@ -69,15 +64,12 @@ function choosePlayer(selectedPlayer) {
   }
 }
 
-// Auto-select X on page load (if desired)
 document.addEventListener('DOMContentLoaded', () => {
   choosePlayer('X');
 });
 
-// Start game: stop start button blink, hide it, start timer, and blink one cell
 startBtn.addEventListener('click', () => {
   if (!isGameStart) {
-    // Stop start button blinking
     startBtn.classList.remove('blink');
 
     isGameStart = true;
@@ -85,7 +77,6 @@ startBtn.addEventListener('click', () => {
     timerDisplay.style.display = 'block';
     startTimer();
 
-    // If player chose O, let AI move first; otherwise, update blinking cell for player's turn.
     if (player === 'O') {
       setTimeout(aiMove, 500);
     } else {
@@ -94,7 +85,6 @@ startBtn.addEventListener('click', () => {
   }
 });
 
-// Player move: remove blink if clicked and proceed with move
 cells.forEach((cell, index) => {
   cell.addEventListener('click', () => {
     if (cell.classList.contains('blink')) {
@@ -102,13 +92,11 @@ cells.forEach((cell, index) => {
     }
     if (isGameStart && boardState[index] === '') {
       makeMove(index, player);
-      // After player's move, if game continues, AI moves
       if (!checkWinner()) setTimeout(aiMove, 500);
     }
   });
 });
 
-// AI move: if blinking cell is chosen by AI, remove blink; then, if player's turn resumes, update blinking cell.
 function aiMove() {
   let availableCells = boardState
     .map((val, idx) => (val === '' ? idx : null))
@@ -121,25 +109,21 @@ function aiMove() {
     }
     makeMove(aiIndex, aiPlayer);
     checkWinner();
-    // If game is still active and it's now the player's turn (X), update blinking cell.
     if (isGameStart && player === 'X') {
       updateBlinkingCell();
     }
   }
 }
 
-// Make move: update board and toggle turn
 function makeMove(index, currentPlayer) {
   cells[index].textContent = currentPlayer;
   boardState[index] = currentPlayer;
   cells[index].style.color = currentPlayer === 'X' ? '#1892EA' : '#A737FF';
 
-  // Toggle turn: if current player is X, then turn becomes O, and vice versa.
   player = currentPlayer === 'X' ? 'O' : 'X';
   resetTimer();
 }
 
-// Timer function with progress bar
 function startTimer() {
   timeLeft = 10;
   progressBar.max = timeLeft;
@@ -158,13 +142,11 @@ function startTimer() {
   }, 1000);
 }
 
-// Reset timer
 function resetTimer() {
   clearInterval(timer);
   startTimer();
 }
 
-// Check winner condition
 function checkWinner() {
   for (let condition of winConditions) {
     const [a, b, c] = condition;
@@ -180,7 +162,6 @@ function checkWinner() {
   return false;
 }
 
-// Declare winner and end game
 function declareWinner(winner) {
   clearInterval(timer);
   titleHeader.textContent = winner === 'Draw' ? "It's a Draw!" : `${winner} Wins! 🎉`;
@@ -189,14 +170,12 @@ function declareWinner(winner) {
   restartBtn.style.display = 'block';
   isGameStart = false;
 
-  // Reset timer UI after game ends
   timeLeft = 10;
   timeLeftDisplay.textContent = timeLeft;
   progressBar.value = timeLeft;
   timerDisplay.style.display = 'none';
 }
 
-// Restart game: reset board and UI
 restartBtn.addEventListener('click', () => {
   boardState.fill('');
   cells.forEach(cell => {
@@ -209,7 +188,6 @@ restartBtn.addEventListener('click', () => {
   titleHeader.textContent = 'Choose Your Side';
   isGameStart = false;
 
-  // Reset timer UI
   timeLeft = 10;
   timeLeftDisplay.textContent = timeLeft;
   progressBar.value = timeLeft;
